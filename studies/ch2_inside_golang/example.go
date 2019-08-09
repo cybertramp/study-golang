@@ -7,49 +7,48 @@
 
 package main
 
-import(
+import (
+	"bufio"
 	"fmt"
 	"os"
 	"strconv"
-	"bufio"
 )
 
-func main(){
-	
+func main() {
+
 	var sum float64 = 0
 
-	if len(os.Args) == 1{
+	if len(os.Args) == 1 {
 		fmt.Println("인자 값을 주세요.")
 	}
 	arg := os.Args
 
-	n, _ := strconv.ParseFloat(arg[1],64)
+	n, _ := strconv.ParseFloat(arg[1], 64)
 
-	for i:=1;i<len(arg);i++{ // arg[1] 이상 부터
-		n, _ = strconv.ParseFloat(arg[i],64)
+	for i := 1; i < len(arg); i++ { // arg[1] 이상 부터
+		n, _ = strconv.ParseFloat(arg[i], 64)
 		sum += n
 	}
 	// sum
-	fmt.Println("Total SUM: ",sum)
-	
+	fmt.Println("Total SUM: ", sum)
+
 	// avg
-	fmt.Println("Average: ",sum/float64(len(arg)-1))
-	
+	fmt.Println("Average: ", sum/float64(len(arg)-1))
+
 	// check "stop" string
 	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan(){
+	for scanner.Scan() {
 		buf := scanner.Text()
-		if buf == "stop"{
+		if buf == "stop" {
 			os.Exit(1)
 		}
 		buf2, err := strconv.Atoi(buf)
-		if err != nil{
+		if err != nil {
 			fmt.Println("[ERR] This string is not int")
 			fmt.Print("> ")
-		}else{
-			fmt.Println(">",buf2)
+		} else {
+			fmt.Println(">", buf2)
 		}
-		
-		
+
 	}
 }

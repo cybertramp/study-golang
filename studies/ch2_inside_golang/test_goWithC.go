@@ -2,8 +2,9 @@ package main
 
 //#include<stdio.h>
 //void callC(){
-//	printf("Clling C code!\n");
+//	printf("Calling C code!\n");
 //}
+import "C"
 
 import "fmt"
 
