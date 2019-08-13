@@ -1,0 +1,21 @@
+package main
+
+import(
+	"fmt"
+	"log"
+	"log/syslog"
+)
+
+func main(){
+	sysLog, err := syslog.New(syslog.LOG_ALERT|syslog.LOG_MAIL, "Some program!")
+
+	if err != nil{
+		log.Fatal(err)		// err message to Fatal
+	} else{
+		log.SetOutput(sysLog)
+	}
+
+	log.Panic(sysLog)
+	fmt.Println("Will you see this?")
+
+}
